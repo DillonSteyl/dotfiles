@@ -275,6 +275,7 @@ require('lazy').setup({
 
           -- Actions
           map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review hunk' })
+          map('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[G]it [R]eset hunk' })
           map('n', '<leader>gip', gitsigns.preview_hunk_inline, { desc = '[G]it [I]nline [P]review hunk' })
           map('n', '<leader>gfb', function()
             gitsigns.blame_line { full = true }
