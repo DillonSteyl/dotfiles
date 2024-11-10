@@ -242,6 +242,16 @@ require('lazy').setup({
   -- Use `opts = {}` to force a plugin to be loaded.
   --
   {
+    'voldikss/vim-floaterm',
+    config = function()
+      -- Keymaps
+      vim.keymap.set('n', '<leader>gg', ':FloatermNew lazygit<CR>', { desc = 'Open Lazygit' })
+      -- use 90% space by default
+      vim.g.floaterm_width = 0.90
+      vim.g.floaterm_height = 0.90
+    end,
+  },
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
@@ -842,8 +852,6 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
-
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
