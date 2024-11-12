@@ -469,6 +469,12 @@ require('lazy').setup({
             },
           },
         },
+        defaults = {
+          mappings = {
+            n = { ['<C-d>'] = require('telescope.actions').delete_buffer },
+            i = { ['<C-d>'] = require('telescope.actions').delete_buffer },
+          },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
@@ -478,6 +484,7 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers ' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
