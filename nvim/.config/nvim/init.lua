@@ -213,7 +213,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Setup pyright to recognize pyenv virtualenvs
+-- Color columns for python
+vim.api.nvim_create_autocmd('BufEnter', {
+  desc = 'Highlight column 100 in *.py files',
+  group = vim.api.nvim_create_augroup('buf-enter-py', { clear = true }),
+  pattern = { '*.py' },
+  callback = function()
+    vim.opt_local.colorcolumn = '100'
+  end,
+})
+
+-- Set PYENV_VERSION using `pyenv version` to support pyenv-virtualenvs
 vim.env.PYENV_VERSION = vim.fn.system('pyenv version'):match '(%S+)%s+%(.-%)'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
