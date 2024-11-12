@@ -167,6 +167,14 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.diagnostic.config {
+  virtual_text = {
+    source = true, -- Or "if_many"
+  },
+  float = {
+    source = true, -- Or "if_many"
+  },
+}
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -660,13 +668,13 @@ require('lazy').setup({
       })
 
       -- Change diagnostic symbols in the sign column (gutter)
-      -- if vim.g.have_nerd_font then
-      --   local signs = { Error = '', Warn = '', Hint = '', Info = '' }
-      --   for type, icon in pairs(signs) do
-      --     local hl = 'DiagnosticSign' .. type
-      --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      --   end
-      -- end
+      if vim.g.have_nerd_font then
+        local signs = { Error = '', Warn = '', Hint = '', Info = '' }
+        for type, icon in pairs(signs) do
+          local hl = 'DiagnosticSign' .. type
+          vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        end
+      end
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -1018,7 +1026,7 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
