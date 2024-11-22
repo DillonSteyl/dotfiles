@@ -124,10 +124,10 @@ Solus = "ﴱ "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = " "
 
 [package]
-symbol = " "
+symbol = " "
 
 [python]
 format = 'via [${symbol}${pyenv_prefix}(${version} (\(${virtualenv}\))) ]($style)'
