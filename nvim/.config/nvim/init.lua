@@ -238,6 +238,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- Start a 'godothost' server if opening a Godot project
+local is_godot_project = vim.fn.filereadable(vim.fn.getcwd() .. '/project.godot')
+if is_godot_project == 1 then
+  vim.fn.serverstart './godothost'
+end
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
