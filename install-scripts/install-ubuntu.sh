@@ -4,8 +4,13 @@
 sudo apt-get update
 echo "  Installing dependencies..."
 sudo apt-get install -y gcc \
-	xclip \
 	make \
+	libevent-dev \
+	ncurses-dev \
+	build-essential \
+	bison \
+	pkg-config \
+	xclip \
 	ripgrep \
 	fzf \
 	curl \
@@ -15,7 +20,16 @@ sudo apt-get install -y gcc \
 
 # TMUX
 echo "  Installing tmux..."
-sudo apt-get install -y tmux
+# sudo apt-get install -y tmux
+TMUX_VERSION=$(curl -s "https://api.github.com/repos/tmux/tmux/releases/latest" | jq .tag_name -r)
+curl -Lo tmux.tar.gz "https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-{$TMUX_VERSION}.tar.gz"
+tar -zxf tmux.tar.gz
+cd tmux-${TMUX_VERSION}/
+./configure
+make && sudo make install
+cd ../
+rm -rf tmux-${TMUX_VERSION}
+rm tmux.tar.gz
 
 # LAZYGIT
 echo "  Installing lazygit..."
