@@ -10,7 +10,8 @@ sudo apt-get install -y gcc \
 	fzf \
 	curl \
 	zsh \
-	stow
+	stow \
+	neofetch
 
 # TMUX
 echo "  Installing tmux..."
