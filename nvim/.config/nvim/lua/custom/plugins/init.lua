@@ -12,4 +12,37 @@ return {
       vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<CR>', { desc = '[M]arkdown [P]review' })
     end,
   },
+  -- documentation generator
+  {
+    'kkoomen/vim-doge',
+    config = function()
+      vim.call 'doge#install'
+      vim.g.doge_enable_mappings = 0
+      -- Generate comment for current line
+      vim.keymap.set('n', '<Leader>dg', '<Plug>(doge-generate)', { desc = '[D]ocumentation [G]enerate' })
+      -- Interactive mode comment todo-jumping
+      vim.keymap.set('n', '<TAB>', '<Plug>(doge-comment-jump-forward)')
+      vim.keymap.set('n', '<S-TAB>', '<Plug>(doge-comment-jump-backward)')
+      vim.keymap.set('i', '<TAB>', '<Plug>(doge-comment-jump-forward)')
+      vim.keymap.set('i', '<S-TAB>', '<Plug>(doge-comment-jump-backward)')
+      vim.keymap.set('x', '<TAB>', '<Plug>(doge-comment-jump-forward)')
+      vim.keymap.set('x', '<S-TAB>', '<Plug>(doge-comment-jump-backward)')
+    end,
+  },
+  -- file renaming with lsps
+  {
+    {
+      'antosha417/nvim-lsp-file-operations',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        -- Uncomment whichever supported plugin(s) you use
+        -- "nvim-tree/nvim-tree.lua",
+        'nvim-neo-tree/neo-tree.nvim',
+        -- "simonmclean/triptych.nvim"
+      },
+      config = function()
+        require('lsp-file-operations').setup()
+      end,
+    },
+  },
 }
