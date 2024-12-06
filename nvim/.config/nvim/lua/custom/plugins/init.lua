@@ -12,11 +12,4 @@ return {
       vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<CR>', { desc = '[M]arkdown [P]review' })
     end,
   },
-  -- typescript tools
-  --
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
 }

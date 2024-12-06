@@ -733,7 +733,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -772,14 +772,8 @@ require('lazy').setup({
       end
 
       require('mason-lspconfig').setup {
-        ensure_installed = {
-          'ts_ls',
-        },
         handlers = {
           function(server_name)
-            if server_name == 'ts_ls' then
-              return
-            end
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
