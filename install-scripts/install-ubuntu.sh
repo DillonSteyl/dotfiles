@@ -18,9 +18,13 @@ sudo apt-get install -y gcc \
 	stow \
 	neofetch
 
+# python build dependencies
+sudo apt install -y build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev curl git \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
 # TMUX
 echo "  Installing tmux..."
-# sudo apt-get install -y tmux
 TMUX_VERSION=$(curl -s "https://api.github.com/repos/tmux/tmux/releases/latest" | jq .tag_name -r)
 curl -Lo tmux.tar.gz "https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-{$TMUX_VERSION}.tar.gz"
 tar -zxf tmux.tar.gz
@@ -52,6 +56,11 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 sudo rm nvim-linux64.tar.gz
+
+# PYENV
+curl https://pyenv.run | bash
+# pyenv-virtualenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
 # NERD FONT
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hermit.zip
