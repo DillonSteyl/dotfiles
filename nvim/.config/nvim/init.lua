@@ -268,8 +268,18 @@ require('lazy').setup({
   {
     'voldikss/vim-floaterm',
     config = function()
-      -- Keymaps
-      vim.keymap.set('n', '<leader>gg', ':FloatermNew lazygit<CR>', { desc = 'Open Lazygit' })
+      -- Open lazygit
+      vim.keymap.set('n', '<leader>gg', function()
+        if vim.fn['floaterm#terminal#get_bufnr'] 'lazygit' < 0 then
+          vim.cmd.FloatermNew {
+            '--name=lazygit',
+            'lazygit',
+          }
+        else
+          vim.cmd.FloatermToggle 'lazygit'
+        end
+      end, { desc = 'Open Lazygit' })
+
       -- use 90% space by default
       vim.g.floaterm_width = 0.90
       vim.g.floaterm_height = 0.90
@@ -879,11 +889,13 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'onsails/lspkind.nvim',
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
       cmp.setup {
@@ -892,8 +904,9 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
-
+        formatting = {
+          format = lspkind.cmp_format(),
+        },
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
