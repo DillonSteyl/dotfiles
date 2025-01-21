@@ -991,6 +991,14 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'rose-pine/neovim',
+    priority = 1001, -- Make sure to load this before all the other start plugins.
+    init = function()
+      vim.cmd.colorscheme 'rose-pine-moon'
+    end,
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
