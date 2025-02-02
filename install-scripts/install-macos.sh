@@ -9,6 +9,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install prereq packages
 brew install \
+	xclip \
+	ripgrep \
+	fzf \
 	stow \
 	neofetch
 
