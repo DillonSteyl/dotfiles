@@ -13,13 +13,19 @@ brew install \
 	ripgrep \
 	fzf \
 	stow \
-	neofetch
+	pipx \
+	gnupg \
+	neofetch \
+	zlib
+
+pipx ensurepath
 
 # Install TMUX
 brew install tmux
 
-# Install LAZYGIT
+# Install LAZY packages
 brew install jesseduffield/lazygit/lazygit
+brew install jesseduffield/lazydocker/lazydocker
 
 # Install STARSHIP PROMPT
 brew install starship
@@ -34,6 +40,24 @@ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/py
 # Install NVM / Node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 nvm install node
+
+# Install POETRY
+source ~/.zshrc
+pipx install poetry
+mkdir ~/.zfunc
+poetry completions zsh > ~/.zfunc/_poetry
+echo 'fpath+=~/.zfunc' >> ~/.zshrc
+echo 'autoload -Uz compinit && compinit' >> ~/.zshrc
+
+# Install KUBECTL/KUBECTX
+brew install \
+	kubectl \
+	kubectx \
+	derailed/k9s/k9s
+
+# kubectl completion
+echo 'source <(kubectl completion zsh)' >> ~/.zshrc
+echo 'KUBE_EDITOR=nvim' >> ~/.zshrc
 
 # Install font
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hermit.zip
