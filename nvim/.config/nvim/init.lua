@@ -751,6 +751,7 @@ require('lazy').setup({
         ts_ls = {},
         tailwindcss = {},
         ember = {},
+        eslint = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
