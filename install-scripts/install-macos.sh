@@ -26,6 +26,7 @@ brew install tmux
 # Install LAZY packages
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
+brew install git-spice
 
 # Install STARSHIP PROMPT
 brew install starship
