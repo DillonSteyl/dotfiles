@@ -1,0 +1,77 @@
+os:
+  editPreset: "nvim-remote"
+customCommands:
+  - key: S
+    description: "Git Spice"
+    commandMenu:
+      - key: n
+        description: "Navigate"
+        context: "localBranches"
+        commandMenu:
+          - key: u
+            description: "Up"
+            command: "gs up"
+          - key: d
+            description: "Down"
+            command: "gs down"
+          - key: b
+            description: "Bottom"
+            command: "gs bottom"
+          - key: t
+            description: "Top"
+            command: "gs top"
+      - key: s
+        description: "Stack"
+        context: "localBranches"
+        commandMenu:
+          - key: r
+            description: "Restack"
+            context: "localBranches"
+            command: "gs stack restack"
+          - key: s
+            description: "Submit (Update Only)"
+            context: "localBranches"
+            command: "gs stack submit --update-only"
+      - key: b
+        description: "Branch"
+        context: "localBranches"
+        commandMenu:
+          - key: c
+            description: "Create"
+            context: "localBranches"
+            prompts:
+              - type: "input"
+                title: "Branch Name"
+                key: "BranchName"
+            command: "gs branch create --no-commit {{.Form.BranchName}}"
+          - key: s
+            description: "Submit"
+            context: "localBranches"
+            commandMenu:
+              - key: a
+                description: "Submit (Autofill)"
+                command: "gs branch submit --fill"
+              - key: m
+                description: "Submit (Manual)"
+                prompts:
+                  - type: "input"
+                    title: "CR Title"
+                    description: "Title of the change request"
+                    key: "CrTitle"
+                  - type: "input"
+                    title: "CR Body"
+                    description: "Body of the change request"
+                    key: "CrBody"
+                  - type: "menu"
+                    title: "CR Status?"
+                    key: "CrDraft"
+                    options:
+                      - name: "Draft"
+                        value: "--draft"
+                      - name: "Ready For Review"
+                        value: "--no-draft"
+                command: "gs branch submit {{.Form.CrDraft}} --title='{{.Form.CrTitle}}' --body='{{.Form.CrBody}}'"
+          - key: t
+            description: "Track"
+            context: "localBranches"
+            command: "gs branch track"
