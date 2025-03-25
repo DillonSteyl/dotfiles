@@ -56,6 +56,10 @@ brew install \
 	kubectx \
 	derailed/k9s/k9s
 
+# Autosuggestions
+brew install zsh-autosuggestions
+echo 'source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
+
 # kubectl completion
 echo 'source <(kubectl completion zsh)' >> ~/.zshrc
 echo 'KUBE_EDITOR=nvim' >> ~/.zshrc
