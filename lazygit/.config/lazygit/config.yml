@@ -70,7 +70,7 @@ customCommands:
                         value: "--draft"
                       - name: "Ready For Review"
                         value: "--no-draft"
-                command: "gs branch submit {{.Form.CrDraft}} --title='{{.Form.CrTitle}}' --body='{{.Form.CrBody}}'"
+                command: "gs branch submit {{.Form.CrDraft}} --title='{{.Form.CrTitle}}' --body='{{.Form.CrBody}}' --fill"
           - key: t
             description: "Track"
             context: "localBranches"
