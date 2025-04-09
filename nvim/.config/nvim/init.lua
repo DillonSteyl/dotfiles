@@ -743,11 +743,15 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        pyright = {
+        basedpyright = {
           settings = {
-            python = {
+            basedpyright = {
               analysis = {
                 typeCheckingMode = 'off', -- will rely on mypy for type checking. Keeps things consistent
+                diagnosticSeverityOverrides = {
+                  reportUnannotatedClassAttribute = 'error',
+                  reportAny = false,
+                },
               },
             },
           },
