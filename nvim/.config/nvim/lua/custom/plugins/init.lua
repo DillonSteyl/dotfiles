@@ -1,4 +1,9 @@
 return {
+  -- indentation
+  {
+    'nmac427/guess-indent.nvim',
+    opts = {},
+  },
   -- markdown preview
   {
     'iamcco/markdown-preview.nvim',
