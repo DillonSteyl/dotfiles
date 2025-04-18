@@ -20,6 +20,9 @@ sudo install lazygit -D -t /usr/local/bin/
 rm lazygit.tar.gz 
 rm lazygit
 
+# Python build deps
+sudo dnf install make gcc patch zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2
+
 # PYENV
 curl https://pyenv.run | bash
 # pyenv-virtualenv
