@@ -813,6 +813,7 @@ require('lazy').setup({
 
       local non_mason_servers = {
         gdscript = {},
+        gh_actions_ls = {},
       }
 
       for server_name, server in pairs(non_mason_servers) do
