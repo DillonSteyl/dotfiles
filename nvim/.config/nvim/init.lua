@@ -758,7 +758,19 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        ts_ls = {
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = '',
+                languages = { 'vue' },
+              },
+            },
+          },
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
+        },
+        volar = {},
         tailwindcss = {},
         ember = {},
         eslint = {},
@@ -815,6 +827,7 @@ require('lazy').setup({
       local non_mason_servers = {
         gdscript = {},
         gh_actions_ls = {},
+        gdshader_lsp = {},
       }
 
       for server_name, server in pairs(non_mason_servers) do
