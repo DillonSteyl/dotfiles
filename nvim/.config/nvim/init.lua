@@ -746,10 +746,6 @@ require('lazy').setup({
             basedpyright = {
               analysis = {
                 typeCheckingMode = 'off', -- will rely on mypy for type checking. Keeps things consistent
-                diagnosticSeverityOverrides = {
-                  reportUnannotatedClassAttribute = 'error',
-                  reportAny = false,
-                },
               },
             },
           },
@@ -789,6 +785,7 @@ require('lazy').setup({
           },
         },
         csharp_ls = {},
+        astro = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -883,6 +880,8 @@ require('lazy').setup({
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        vue = { 'prettierd', 'prettier', stop_after_first = true },
+        astro = { 'prettierd', 'prettier', stop_after_first = true },
         yaml = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
