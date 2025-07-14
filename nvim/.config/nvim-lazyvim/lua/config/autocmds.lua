@@ -6,3 +6,9 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+
+-- Start a 'godothost' server if opening a Godot project
+local is_godot_project = vim.fn.filereadable(vim.fn.getcwd() .. "/project.godot")
+if is_godot_project == 1 then
+  vim.fn.serverstart("./godothost")
+end
