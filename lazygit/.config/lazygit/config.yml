@@ -8,23 +8,25 @@ customCommands:
     commandMenu:
       - key: n
         description: "Navigate"
-        context: "localBranches"
         commandMenu:
           - key: u
             description: "Up"
             command: "gs up"
+            context: "localBranches"
           - key: d
             description: "Down"
             command: "gs down"
+            context: "localBranches"
           - key: b
             description: "Bottom"
             command: "gs bottom"
+            context: "localBranches"
           - key: t
             description: "Top"
             command: "gs top"
+            context: "localBranches"
       - key: s
         description: "Stack"
-        context: "localBranches"
         commandMenu:
           - key: r
             description: "Restack"
@@ -36,7 +38,6 @@ customCommands:
             command: "gs stack submit --update-only"
       - key: b
         description: "Branch"
-        context: "localBranches"
         commandMenu:
           - key: c
             description: "Create"
@@ -48,13 +49,14 @@ customCommands:
             command: "gs branch create --no-commit {{.Form.BranchName}}"
           - key: s
             description: "Submit"
-            context: "localBranches"
             commandMenu:
               - key: a
                 description: "Submit (Autofill)"
+                context: "localBranches"
                 command: "gs branch submit --fill"
               - key: m
                 description: "Submit (Manual)"
+                context: "localBranches"
                 prompts:
                   - type: "input"
                     title: "CR Title"
