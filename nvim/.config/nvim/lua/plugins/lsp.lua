@@ -2,6 +2,11 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      -- disable inlay hints
+      inlay_hints = {
+        enabled = false,
+      },
+      -- add servers
       servers = {
         gdscript = {},
         gh_actions_ls = {},

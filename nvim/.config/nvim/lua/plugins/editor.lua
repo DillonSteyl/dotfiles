@@ -1,7 +1,17 @@
 return {
   {
     "folke/snacks.nvim",
-    opts = { explorer = {} },
+    opts = {
+      explorer = {},
+      picker = {
+        sources = {
+          explorer = {
+            auto_close = true,
+            layout = { preset = "dropdown" },
+          },
+        },
+      },
+    },
     keys = {
       {
         "\\",
