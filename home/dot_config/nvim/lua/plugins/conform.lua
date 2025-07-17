@@ -13,6 +13,7 @@ return {
       vue = { "prettierd", "prettier", stop_after_first = true },
       astro = { "prettierd", "prettier", stop_after_first = true },
       yaml = { "prettierd", "prettier", stop_after_first = true },
+      html = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 }
