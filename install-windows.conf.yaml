@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ${LOCALAPPDATA}/nvim:
+      path: nvim
+    ${LOCALAPPDATA}/lazygit/config.yml:
+      path: lazygit/config.yml
+      force: true
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
+      path: shell/powershell_profile.ps1
+    ~/.config/starship.toml:
+      path: starship/starship.toml
+    ~/.wezterm.lua:
+      path: wezterm/.wezterm.lua
+
