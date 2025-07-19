@@ -3,12 +3,12 @@ local config = wezterm.config_builder()
 
 -- Theming
 config.color_scheme = "Catppuccin Macchiato"
--- config.font = wezterm.font("Hurmit Nerd Font Mono")
+config.font = wezterm.font("Hurmit Nerd Font")
+config.font_size = 14
 
 -- TMUX emulation
 config.tab_and_split_indices_are_zero_based = true
 config.use_fancy_tab_bar = false
--- config.tab_bar_at_bottom = true
 config.leader = { key = " ", mods = "CTRL", timeout = 1000 }
 
 config.keys = {
@@ -48,12 +48,70 @@ for i = 0, 9 do
 	})
 end
 
--- show workspace name
+-- status appearance and util functions
+local basename = function(s)
+	return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
+
 wezterm.on("update-status", function(window, _)
-	local WINDOW_ICON = utf8.char(0xf2d2)
+	local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
+	local pane = window:active_pane()
+
+	local status_bg = { Color = scheme.background }
+	if window:leader_is_active() then
+		status_bg = { AnsiColor = "Maroon" }
+	end
+
 	window:set_left_status(wezterm.format({
 		{ Foreground = { AnsiColor = "Green" } },
-		{ Text = " " .. WINDOW_ICON .. " " .. window:active_workspace() .. "    " },
+		{ Background = status_bg },
+		{
+			Text = "  " .. window:active_workspace(),
+		},
+		{ Foreground = { AnsiColor = "White" } },
+		{
+			Text = " │ ",
+		},
+		{ Foreground = { AnsiColor = "Red" } },
+		{
+			Text = " " .. basename(pane:get_foreground_process_name()),
+		},
+		{ Foreground = { AnsiColor = "White" } },
+		{
+			Text = " │ ",
+		},
+		{ Foreground = { AnsiColor = "Blue" } },
+		{
+			Text = " " .. basename(pane:get_current_working_dir().file_path) .. "     ",
+		},
+	}))
+end)
+
+wezterm.on("update-right-status", function(window, pane)
+	-- "Wed Mar 3 08:14"
+	local date = wezterm.format({
+		{ Foreground = { AnsiColor = "Blue" } },
+		{ Text = wezterm.strftime("󰃭 %Y-%m-%d  󰥔 %H:%M ") },
+	})
+
+	local bat = ""
+	local bat_icon = ""
+	for _, b in ipairs(wezterm.battery_info()) do
+		if b.state_of_charge > 0 then
+			bat_icon = "󱊣  "
+		elseif b.state_of_charge > 0.33 then
+			bat_icon = "󱊢  "
+		elseif b.state_of_charge > 0.66 then
+			bat_icon = "󱊡  "
+		end
+		bat = wezterm.format({
+			{ Foreground = { AnsiColor = "Green" } },
+			{ Text = bat_icon .. string.format("%.0f%%", b.state_of_charge * 100) },
+		})
+	end
+
+	window:set_right_status(wezterm.format({
+		{ Text = bat .. "   " .. date },
 	}))
 end)
 

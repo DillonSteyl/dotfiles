@@ -1,0 +1,16 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- link:
+    ~/.config/nvim:
+      path: nvim
+    ~/.config/lazygit/config.yml:
+      path: lazygit/config.yml
+      force: true
+    ~/.config/starship.toml:
+      path: starship/starship.toml
+    ~/.wezterm.lua:
+      path: wezterm/.wezterm.lua
