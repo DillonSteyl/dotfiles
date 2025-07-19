@@ -20,6 +20,7 @@ config.tab_and_split_indices_are_zero_based = true
 config.use_fancy_tab_bar = false
 config.leader = { key = " ", mods = "CTRL", timeout = 1000 }
 config.max_fps = 144
+config.animation_fps = 60
 config.window_decorations = "RESIZE"
 
 config.keys = {
