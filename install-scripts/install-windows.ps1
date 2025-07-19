@@ -31,6 +31,8 @@ scoop install python
 
 # MISC
 scoop install fastfetch
+scoop bucket add nerd-fonts
+scoop install nerd-fonts/Hermit-NF
 
 # GODOT
 winget install 'Microsoft.DotNet.SDK.9'
