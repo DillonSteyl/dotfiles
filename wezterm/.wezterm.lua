@@ -4,12 +4,13 @@ local config = wezterm.config_builder()
 -- Theming
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("Hurmit Nerd Font")
-config.font_size = 14
+config.font_size = 12
 
 -- TMUX emulation
 config.tab_and_split_indices_are_zero_based = true
 config.use_fancy_tab_bar = false
 config.leader = { key = " ", mods = "CTRL", timeout = 1000 }
+config.max_fps = 144
 
 config.keys = {
 	{
