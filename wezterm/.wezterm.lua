@@ -1,6 +1,15 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- OS-specific
+local is_windows = function()
+	return wezterm.target_triple:find("windows") ~= nil
+end
+
+if is_windows() then
+	config.default_prog = { "pwsh.exe" }
+end
+
 -- Theming
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("Hurmit Nerd Font")
@@ -11,6 +20,7 @@ config.tab_and_split_indices_are_zero_based = true
 config.use_fancy_tab_bar = false
 config.leader = { key = " ", mods = "CTRL", timeout = 1000 }
 config.max_fps = 144
+config.window_decorations = "RESIZE"
 
 config.keys = {
 	{
@@ -50,7 +60,11 @@ for i = 0, 9 do
 end
 
 -- status appearance and util functions
-local basename = function(s)
+local basename = function(s, is_filepath)
+	if is_windows() and is_filepath then
+		-- Filepaths in windows have a trailing slash
+		s = s:sub(1, -2)
+	end
 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
@@ -83,7 +97,7 @@ wezterm.on("update-status", function(window, _)
 		},
 		{ Foreground = { AnsiColor = "Blue" } },
 		{
-			Text = " " .. basename(pane:get_current_working_dir().file_path) .. "     ",
+			Text = " " .. basename(pane:get_current_working_dir().file_path, true) .. "     ",
 		},
 	}))
 end)
@@ -115,14 +129,5 @@ wezterm.on("update-right-status", function(window, pane)
 		{ Text = bat .. "   " .. date },
 	}))
 end)
-
--- OS-specific
-local is_windows = function()
-	return wezterm.target_triple:find("windows") ~= nil
-end
-
-if is_windows() then
-	config.default_prog = { "pwsh.exe" }
-end
 
 return config
