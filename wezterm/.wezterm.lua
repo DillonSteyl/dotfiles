@@ -6,6 +6,10 @@ local is_windows = function()
 	return wezterm.target_triple:find("windows") ~= nil
 end
 
+local is_linux = function()
+	return wezterm.target_triple:find("linux") ~= nil
+end
+
 if is_windows() then
 	config.default_prog = { "pwsh.exe" }
 end
@@ -21,7 +25,9 @@ config.use_fancy_tab_bar = false
 config.leader = { key = " ", mods = "CTRL", timeout = 1000 }
 config.max_fps = 144
 config.animation_fps = 60
-config.window_decorations = "RESIZE"
+
+-- FEDORA: Fixes issue with title bar not showing
+config.enable_wayland = false
 
 config.keys = {
 	{
@@ -62,8 +68,8 @@ end
 
 -- status appearance and util functions
 local basename = function(s, is_filepath)
-	if is_windows() and is_filepath then
-		-- Filepaths in windows have a trailing slash
+	if is_windows() or is_linux() and is_filepath then
+		-- Filepaths have a trailing slash
 		s = s:sub(1, -2)
 	end
 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
@@ -83,14 +89,6 @@ wezterm.on("update-status", function(window, _)
 		{ Background = status_bg },
 		{
 			Text = "  " .. window:active_workspace(),
-		},
-		{ Foreground = { AnsiColor = "White" } },
-		{
-			Text = " │ ",
-		},
-		{ Foreground = { AnsiColor = "Red" } },
-		{
-			Text = " " .. basename(pane:get_foreground_process_name()),
 		},
 		{ Foreground = { AnsiColor = "White" } },
 		{
