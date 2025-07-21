@@ -18,6 +18,11 @@ end
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("Hurmit Nerd Font")
 config.font_size = 12
+local COLOR_SCHEME = wezterm.get_builtin_color_schemes()[config.color_scheme]
+-- The filled in variant of the < symbol
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+-- The filled in variant of the > symbol
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 -- TMUX emulation
 config.tab_and_split_indices_are_zero_based = true
@@ -76,10 +81,9 @@ local basename = function(s, is_filepath)
 end
 
 wezterm.on("update-status", function(window, _)
-	local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
 	local pane = window:active_pane()
 
-	local status_bg = { Color = scheme.background }
+	local status_bg = { Color = COLOR_SCHEME.background }
 	if window:leader_is_active() then
 		status_bg = { AnsiColor = "Maroon" }
 	end
@@ -127,6 +131,29 @@ wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(wezterm.format({
 		{ Text = bat .. "   " .. date },
 	}))
+end)
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
+
+	local tab_bg = COLOR_SCHEME.tab_bar.inactive_tab.bg_color
+	local tab_fg = COLOR_SCHEME.tab_bar.inactive_tab.fg_color
+	if tab.is_active then
+		tab_bg = COLOR_SCHEME.tab_bar.active_tab.bg_color
+		tab_fg = COLOR_SCHEME.tab_bar.active_tab.fg_color
+	end
+
+	return {
+		{ Background = { Color = COLOR_SCHEME.background } },
+		{ Foreground = { Color = tab_bg } },
+		{ Text = SOLID_LEFT_ARROW },
+		{ Background = { Color = tab_bg } },
+		{ Foreground = { Color = tab_fg } },
+		{ Text = " " .. tab.tab_index .. ": " .. title .. " " },
+		{ Background = { Color = COLOR_SCHEME.background } },
+		{ Foreground = { Color = tab_bg } },
+		{ Text = SOLID_RIGHT_ARROW },
+	}
 end)
 
 return config
