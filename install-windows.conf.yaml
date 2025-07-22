@@ -4,6 +4,9 @@
 
 - clean: ['~']
 
+- create:
+  - ${LOCALAPPDATA}/lazygit
+
 - link:
     ${LOCALAPPDATA}/nvim:
       path: nvim

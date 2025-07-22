@@ -4,6 +4,9 @@
 
 - clean: ["~"]
 
+- create:
+  - ~/.config/lazygit
+
 - link:
     ~/.config/nvim:
       path: nvim
