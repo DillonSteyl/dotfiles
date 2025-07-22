@@ -37,3 +37,13 @@ scoop install nerd-fonts/Hermit-NF
 # GODOT
 winget install 'Microsoft.DotNet.SDK.9'
 dotnet tool install --global Chickensoft.GodotEnv
+
+# GCC / MSYS2
+# scoop install msys2
+# msys2
+# pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+# exit
+# 
+# # add to path
+# $env:path >> a.out
+# [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Users\Dillon\scoop\apps\msys2\current\ucrt64\bin", "User")
