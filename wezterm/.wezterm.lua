@@ -18,6 +18,7 @@ end
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("Hurmit Nerd Font")
 config.font_size = 12
+config.tab_max_width = 25
 local COLOR_SCHEME = wezterm.get_builtin_color_schemes()[config.color_scheme]
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
@@ -134,7 +135,7 @@ wezterm.on("update-right-status", function(window, pane)
 end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
+	local title = wezterm.truncate_right(tab.active_pane.title, max_width - 5)
 
 	local tab_bg = COLOR_SCHEME.tab_bar.inactive_tab.bg_color
 	local tab_fg = COLOR_SCHEME.tab_bar.inactive_tab.fg_color
@@ -149,7 +150,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Text = SOLID_LEFT_ARROW },
 		{ Background = { Color = tab_bg } },
 		{ Foreground = { Color = tab_fg } },
-		{ Text = " " .. tab.tab_index .. ": " .. title .. " " },
+		{ Text = tab.tab_index .. ": " .. title },
 		{ Background = { Color = COLOR_SCHEME.background } },
 		{ Foreground = { Color = tab_bg } },
 		{ Text = SOLID_RIGHT_ARROW },
