@@ -26,6 +26,17 @@ tabline.setup({
 		},
 	},
 	sections = {
+		tabline_a = {
+			{
+				"mode",
+				fmt = function(mode, window)
+					if window:leader_is_active() then
+						return mode .. " "
+					end
+					return mode .. " "
+				end,
+			},
+		},
 		tab_active = {
 			{ "index", zero_indexed = true },
 			{ "parent", padding = 0 },
