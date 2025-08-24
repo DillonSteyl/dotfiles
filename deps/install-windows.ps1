@@ -23,16 +23,15 @@ scoop install wezterm
 # STARSHIP (PROMPT)
 scoop install starship
 
-# PYTHON
-scoop install python
-# TODO: Check if uv@0.8.0 checksum issue is resolved
-# scoop install uv
-# uv python install
+# Python with UV
+winget install --id=astral-sh.uv -e
+uv python install --default
 
 # MISC
 scoop install fastfetch
 scoop bucket add nerd-fonts
 scoop install nerd-fonts/Hermit-NF
+winget install Microsoft.PowerToys
 
 # GODOT
 winget install 'Microsoft.DotNet.SDK.9'
@@ -46,4 +45,4 @@ dotnet tool install --global Chickensoft.GodotEnv
 # 
 # # add to path
 # $env:path >> a.out
-# [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Users\Dillon\scoop\apps\msys2\current\ucrt64\bin", "User")
+# [Environment]::SetEnvironmentVariable("Path", $env:Path + ";${HOME}\scoop\apps\msys2\current\ucrt64\bin", "User")
