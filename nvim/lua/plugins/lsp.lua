@@ -21,6 +21,7 @@ return {
           },
         },
         ts_ls = {
+          single_file_support = false,
           init_options = {
             plugins = {
               {
@@ -46,6 +47,12 @@ return {
         eslint = {},
         csharp_ls = {},
         astro = {},
+        jsonls = {},
+        denols = {
+          root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
+          single_file_support = false,
+          settings = {},
+        },
       },
     },
   },
