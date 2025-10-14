@@ -14,6 +14,8 @@ return {
       astro = { "prettierd", "prettier", stop_after_first = true },
       yaml = { "prettierd", "prettier", stop_after_first = true },
       html = { "prettierd", "prettier", stop_after_first = true },
+      sql = { "prettierd", "prettier", stop_after_first = true },
+      markdown = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 }
