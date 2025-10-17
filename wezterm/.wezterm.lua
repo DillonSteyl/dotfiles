@@ -12,6 +12,7 @@ end
 
 -- Theming
 config.color_scheme = "Catppuccin Macchiato"
+-- config.color_scheme = "Catppuccin Latte"
 config.font = wezterm.font("Hurmit Nerd Font")
 config.font_size = 12
 config.tab_max_width = 25
@@ -19,7 +20,7 @@ config.tab_max_width = 25
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
 	options = {
-		theme = "Catppuccin Macchiato",
+		theme = config.color_scheme,
 		tab_separators = {
 			left = wezterm.nerdfonts.ple_right_half_circle_thick,
 			right = wezterm.nerdfonts.ple_left_half_circle_thick,
