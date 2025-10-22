@@ -11,8 +11,9 @@ if is_windows() then
 end
 
 -- Theming
-config.color_scheme = "Catppuccin Macchiato"
--- config.color_scheme = "Catppuccin Latte"
+config.color_scheme = "rose-pine-moon"
+-- config.color_scheme = "rose-pine-dawn"
+
 config.font = wezterm.font("Hurmit Nerd Font")
 config.font_size = 12
 config.tab_max_width = 25
@@ -51,8 +52,10 @@ tabline.setup({
 		},
 	},
 })
+tabline.apply_to_config(config)
 
 -- TMUX emulation
+config.window_decorations = "TITLE | RESIZE"
 config.tab_and_split_indices_are_zero_based = true
 config.show_new_tab_button_in_tab_bar = false
 config.use_fancy_tab_bar = false
