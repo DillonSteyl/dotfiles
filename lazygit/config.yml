@@ -79,3 +79,15 @@ customCommands:
             description: "Track"
             context: "localBranches"
             command: "gs branch track"
+      - key: r
+        description: "Repo"
+        commandMenu:
+          - key: i
+            description: "Init"
+            context: "localBranches"
+            prompts:
+              - type: "input"
+                title: "Trunk Branch"
+                key: "TrunkBranch"
+                initialValue: "main"
+            command: "gs repo init --trunk={{.Form.TrunkBranch}}"
