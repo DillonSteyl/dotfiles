@@ -12,7 +12,10 @@ end
 
 -- Theming
 config.color_scheme = "rose-pine-moon"
--- config.color_scheme = "rose-pine-dawn"
+config.colors = {
+	selection_bg = "#d2d0e7",
+	selection_fg = "#26233a",
+}
 
 config.font = wezterm.font("Hurmit Nerd Font")
 config.font_size = 12
