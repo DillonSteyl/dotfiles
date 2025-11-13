@@ -37,6 +37,10 @@ winget install Microsoft.PowerToys
 winget install 'Microsoft.DotNet.SDK.9'
 dotnet tool install --global Chickensoft.GodotEnv
 
+# MISE & Git Spice
+scoop install mise
+mise use --global 'ubi:abhinav/git-spice[exe=gs]'
+
 # GCC / MSYS2
 # scoop install msys2
 # msys2

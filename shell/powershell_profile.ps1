@@ -1,7 +1,7 @@
 fastfetch
 
 Invoke-Expression (&starship init powershell)
-
+mise activate pwsh | Out-String | Invoke-Expression
 
 # Wezterm Utilities
 function Rename-WeztermSession {
