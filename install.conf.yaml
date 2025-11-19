@@ -17,3 +17,12 @@
       path: starship/starship.toml
     ~/.wezterm.lua:
       path: wezterm/.wezterm.lua
+    ~/.config/k9s/skins/:
+      path: k9s/skins
+      force: true
+    ~/.config/k9s/config.yaml:
+      path: k9s/config.yaml
+      force: true
+    ~/.config/k9s/aliases.yaml:
+      path: k9s/aliases.yaml
+      force: true
