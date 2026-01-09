@@ -47,6 +47,10 @@ customCommands:
                 title: "Branch Name"
                 key: "BranchName"
             command: "gs branch create --no-commit {{.Form.BranchName}}"
+          - key: f
+            description: "Fold"
+            context: "localBranches"
+            command: "gs branch fold"
           - key: s
             description: "Submit"
             commandMenu:
