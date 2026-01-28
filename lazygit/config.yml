@@ -36,6 +36,14 @@ customCommands:
             description: "Submit (Update Only)"
             context: "localBranches"
             command: "gs stack submit --update-only"
+          - key: o
+            description: "Upstack [O]nto"
+            context: "localBranches"
+            command: "gs upstack onto {{.SelectedLocalBranch.Name}}"
+            prompts:
+              - type: "confirm"
+                title: "Move Branch"
+                body: "Move {{.CheckedOutBranch.Name}} onto {{.SelectedLocalBranch.Name}}?"
       - key: b
         description: "Branch"
         commandMenu:
