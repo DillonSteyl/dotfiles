@@ -10,6 +10,10 @@ if is_windows() then
 	config.default_prog = { "pwsh.exe" }
 end
 
+local function has_custom_tab_title(tab)
+	return tab.tab_title ~= ""
+end
+
 -- Theming
 config.color_scheme = "rose-pine-moon"
 config.colors = {
@@ -44,14 +48,50 @@ tabline.setup({
 		},
 		tab_active = {
 			{ "index", zero_indexed = true },
-			{ "parent", padding = 0 },
-			"/",
-			{ "cwd", padding = { left = 0, right = 1 } },
+			{
+				"process",
+				fmt = function()
+					return ""
+				end,
+				padding = 0,
+			},
+			{ "tab", cond = has_custom_tab_title, padding = { left = 0, right = 1 } },
+			{
+				"parent",
+				cond = function(tab)
+					return not has_custom_tab_title(tab)
+				end,
+				padding = 0,
+			},
+			function(tab)
+				if not has_custom_tab_title(tab) then
+					return "/"
+				end
+				return ""
+			end,
+			{
+				"cwd",
+				cond = function(tab)
+					return not has_custom_tab_title(tab)
+				end,
+				padding = { left = 0, right = 1 },
+			},
 			{ "zoomed", padding = 0 },
 		},
 		tab_inactive = {
 			{ "index", zero_indexed = true },
-			{ "process", padding = { left = 0, right = 1 } },
+			{
+				"process",
+				icons_enabled = true,
+				padding = 0,
+				fmt = function(process, tab)
+					if has_custom_tab_title(tab) then
+						return ""
+					end
+					return process
+				end,
+			},
+			{ "tab", cond = has_custom_tab_title, padding = { left = 0, right = 1 } },
 		},
 	},
 })
