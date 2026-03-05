@@ -11,19 +11,19 @@ customCommands:
         commandMenu:
           - key: u
             description: "Up"
-            command: "gs up"
+            command: "git-spice up"
             context: "localBranches"
           - key: d
             description: "Down"
-            command: "gs down"
+            command: "git-spice down"
             context: "localBranches"
           - key: b
             description: "Bottom"
-            command: "gs bottom"
+            command: "git-spice bottom"
             context: "localBranches"
           - key: t
             description: "Top"
-            command: "gs top"
+            command: "git-spice top"
             context: "localBranches"
       - key: s
         description: "Stack"
@@ -31,15 +31,15 @@ customCommands:
           - key: r
             description: "Restack"
             context: "localBranches"
-            command: "gs stack restack"
+            command: "git-spice stack restack"
           - key: s
             description: "Submit (Update Only)"
             context: "localBranches"
-            command: "gs stack submit --update-only"
+            command: "git-spice stack submit --update-only"
           - key: o
             description: "Upstack [O]nto"
             context: "localBranches"
-            command: "gs upstack onto {{.SelectedLocalBranch.Name}}"
+            command: "git-spice upstack onto {{.SelectedLocalBranch.Name}}"
             prompts:
               - type: "confirm"
                 title: "Move Branch"
@@ -54,18 +54,18 @@ customCommands:
               - type: "input"
                 title: "Branch Name"
                 key: "BranchName"
-            command: "gs branch create --no-commit {{.Form.BranchName}}"
+            command: "git-spice branch create --no-commit {{.Form.BranchName}}"
           - key: f
             description: "Fold"
             context: "localBranches"
-            command: "gs branch fold"
+            command: "git-spice branch fold"
           - key: s
             description: "Submit"
             commandMenu:
               - key: a
                 description: "Submit (Autofill)"
                 context: "localBranches"
-                command: "gs branch submit --fill"
+                command: "git-spice branch submit --fill"
               - key: m
                 description: "Submit (Manual)"
                 context: "localBranches"
@@ -86,11 +86,11 @@ customCommands:
                         value: "--draft"
                       - name: "Ready For Review"
                         value: "--no-draft"
-                command: "gs branch submit {{.Form.CrDraft}} --title='{{.Form.CrTitle}}' --body='{{.Form.CrBody}}' --fill"
+                command: "git-spice branch submit {{.Form.CrDraft}} --title='{{.Form.CrTitle}}' --body='{{.Form.CrBody}}' --fill"
           - key: t
             description: "Track"
             context: "localBranches"
-            command: "gs branch track"
+            command: "git-spice branch track"
       - key: r
         description: "Repo"
         commandMenu:
@@ -102,4 +102,4 @@ customCommands:
                 title: "Trunk Branch"
                 key: "TrunkBranch"
                 initialValue: "main"
-            command: "gs repo init --trunk={{.Form.TrunkBranch}}"
+            command: "git-spice repo init --trunk={{.Form.TrunkBranch}}"
