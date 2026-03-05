@@ -15,7 +15,7 @@ return {
           settings = {
             basedpyright = {
               analysis = {
-                typeCheckingMode = "off", -- will rely on mypy for type checking. Keeps things consistent
+                typeCheckingMode = "basic", -- will rely on mypy for type checking. Keeps things consistent
               },
             },
           },
