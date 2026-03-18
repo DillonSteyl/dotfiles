@@ -160,6 +160,11 @@ config.keys = {
 			end),
 		}),
 	},
+	-- vim-style pane navigation
+	{ mods = "LEADER", key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ mods = "LEADER", key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ mods = "LEADER", key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ mods = "LEADER", key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
 }
 
 -- leader + number to activate that tab
