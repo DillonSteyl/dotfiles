@@ -20,6 +20,7 @@ config.colors = {
 	selection_bg = "#d2d0e7",
 	selection_fg = "#26233a",
 }
+config.window_background_opacity = 0.95
 
 config.font = wezterm.font("Hurmit Nerd Font")
 config.font_size = 12
