@@ -47,6 +47,9 @@ return {
         eslint = {},
         csharp_ls = {},
         astro = {},
+        apex_ls = {
+          apex_jar_path = vim.fn.stdpath("data") .. "/mason/share/apex-language-server/apex-jorje-lsp.jar",
+        },
         jsonls = {},
         denols = {
           root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
