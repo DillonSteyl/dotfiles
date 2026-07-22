@@ -1,11 +1,15 @@
 return {
   { "catppuccin/nvim", name = "catppuccin" },
   { "rose-pine/neovim", name = "rose-pine", opts = { disable_background = true } },
-  -- Configure LazyVim to load catppuccin
+  {
+    "folke/tokyonight.nvim",
+    opts = { style = "moon", transparent = true },
+  },
+  -- Configure default colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine-moon",
+      colorscheme = "tokyonight",
     },
   },
 }
