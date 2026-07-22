@@ -1,6 +1,9 @@
 return {
   "folke/snacks.nvim",
   opts = {
+    scratch = {
+      ft = "markdown",
+    },
     dashboard = {
       preset = {
         header = [[
