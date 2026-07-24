@@ -15,14 +15,14 @@ local function has_custom_tab_title(tab)
 end
 
 -- Theming
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Tokyo Night Moon"
 config.colors = {
 	selection_bg = "#d2d0e7",
 	selection_fg = "#26233a",
 }
 config.window_background_opacity = 0.95
 
-config.font = wezterm.font("CaskaydiaCove Nerd Font")
+config.font = wezterm.font_with_fallback({ "CaskaydiaCove Nerd Font", "FiraCode Nerd Font", "JetBrains Mono" })
 config.font_size = 12
 config.tab_max_width = 25
 
