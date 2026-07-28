@@ -2,6 +2,7 @@ return {
   "saghen/blink.cmp",
   dependencies = { "milanglacier/minuet-ai.nvim" },
   opts = function(_, opts)
+    opts.keymap.preset = "default"
     opts.keymap["<C-l>"] = { "show", "show_documentation", "hide_documentation" }
     opts.keymap["<A-y>"] = require("minuet").make_blink_map()
 
