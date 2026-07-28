@@ -45,7 +45,7 @@ return {
         tailwindcss = {},
         ember = {},
         eslint = {},
-        csharp_ls = {},
+        csharp_ls = { enabled = vim.fn.executable("dotnet") == 1 },
         astro = {},
         apex_ls = {
           apex_jar_path = vim.fn.stdpath("data") .. "/mason/share/apex-language-server/apex-jorje-lsp.jar",
