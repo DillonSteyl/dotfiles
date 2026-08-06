@@ -8,6 +8,7 @@ $git_branch\
 $git_state\
 $git_status\
 $cmd_duration\
+$time\
 $line_break\
 $os\
 $character"""
@@ -82,8 +83,8 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+symbol = " "
+format = '[$symbol$branch]($style)'
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
@@ -103,3 +104,8 @@ style = "bright-black"
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
+
+[time]
+format = ' [\[$time\]]($style)'
+disabled = false
+style = "bright-black"
