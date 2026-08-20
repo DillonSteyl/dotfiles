@@ -22,7 +22,7 @@ config.colors = {
 }
 config.window_background_opacity = 0.95
 
-config.font = wezterm.font_with_fallback({ "CaskaydiaCove Nerd Font", "FiraCode Nerd Font", "JetBrains Mono" })
+config.font = wezterm.font("CommitMono Nerd Font", { weight = 400 })
 config.font_size = 12
 config.tab_max_width = 25
 
