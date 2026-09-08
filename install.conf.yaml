@@ -5,7 +5,7 @@
 - clean: ["~"]
 
 - create:
-  - ~/.config/lazygit
+    - ~/.config/lazygit
 
 - link:
     ~/.config/nvim:
@@ -26,3 +26,7 @@
     ~/.config/k9s/aliases.yaml:
       path: k9s/aliases.yaml
       force: true
+    ~/.config/ghostty/config:
+      path: ghostty/config
+    ~/.config/herdr/config.toml:
+      path: herdr/config.toml

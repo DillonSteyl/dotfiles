@@ -1,7 +1,10 @@
-theme = catppuccin-macchiato
-font-family = "Hurmit Nerd Font"
+theme = tokyonight
+font-family = "CommitMono Nerd Font"
 
 macos-option-as-alt = true
 window-width = 120
 window-height = 35
 mouse-hide-while-typing
+
+background-opacity = 0.9
+background-blur = "true"
