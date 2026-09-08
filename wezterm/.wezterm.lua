@@ -48,7 +48,7 @@ tabline.setup({
 			},
 		},
 		tab_active = {
-			{ "index", zero_indexed = true },
+			{ "index" },
 			{
 				"process",
 				fmt = function()
@@ -80,7 +80,7 @@ tabline.setup({
 			{ "zoomed", padding = 0 },
 		},
 		tab_inactive = {
-			{ "index", zero_indexed = true },
+			{ "index" },
 			{
 				"process",
 				icons_enabled = true,
@@ -100,7 +100,7 @@ tabline.apply_to_config(config)
 
 -- TMUX emulation
 config.window_decorations = "TITLE | RESIZE"
-config.tab_and_split_indices_are_zero_based = true
+-- config.tab_and_split_indices_are_zero_based = true
 config.show_new_tab_button_in_tab_bar = false
 config.use_fancy_tab_bar = false
 config.leader = { key = " ", mods = "CTRL", timeout = 1000 }
@@ -169,11 +169,11 @@ config.keys = {
 }
 
 -- leader + number to activate that tab
-for i = 0, 9 do
+for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "LEADER",
-		action = wezterm.action.ActivateTab(i),
+		action = wezterm.action.ActivateTab(i - 1),
 	})
 end
 
