@@ -30,3 +30,9 @@
       path: ghostty/config
     ~/.config/herdr/config.toml:
       path: herdr/config.toml
+    ~/.config/git/hooks:
+      path: git-hooks
+
+- shell:
+    - git config --global core.hooksPath ~/.config/git/hooks
+    - chmod +x ~/.config/git/hooks/post-checkout
