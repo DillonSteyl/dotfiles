@@ -73,10 +73,10 @@ prefix = "ctrl+space"
 # reload_config = "prefix+shift+r"
 # open_notification_target = "prefix+o"
 # workspace_picker = "prefix+w"
-# goto = "prefix+g"
+goto = ""
 # new_workspace = "prefix+shift+n"
 # new_worktree = "prefix+shift+g"
-# open_worktree = ""    # optional, unset by default
+open_worktree = "prefix+g"
 # remove_worktree = ""  # optional, unset by default; opens confirmation
 # rename_workspace = "prefix+shift+w"
 # close_workspace = "prefix+shift+d"
@@ -90,8 +90,8 @@ prefix = "ctrl+space"
 # rename_tab = "prefix+shift+t"
 previous_tab = "prefix+["
 next_tab = "prefix+]"
-# move_tab_previous = ""   # optional, e.g. "alt+shift+left" moves the tab toward the front
-# move_tab_next = ""       # optional, e.g. "alt+shift+right" moves the tab toward the back
+move_tab_previous = "prefix+shift+["
+move_tab_next = "prefix+shift+]"
 # switch_tab = "prefix+1..9"
 # switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
 # close_tab = "prefix+shift+x"
@@ -114,6 +114,7 @@ next_tab = "prefix+]"
 # resize_pane_up = ""     # optional, e.g. "ctrl+shift+alt+up"
 # resize_pane_right = ""  # optional, e.g. "ctrl+shift+alt+right"
 # toggle_sidebar = "prefix+b"
+copy_mode = "prefix+y"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
 # They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
