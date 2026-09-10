@@ -1,0 +1,22 @@
+[tools]
+node = "24"
+uv = "latest"
+python = "3.14"
+herdr = "latest"
+"npm:@openai/codex" = "latest"
+"npm:@zed-industries/codex-acp" = "latest"
+"pipx:awscli-local" = "latest"
+"npm:prettier" = "latest"
+"npm:opencode-ai" = "latest"
+"npm:ember-cli-update" = "latest"
+"npm:@posthog/cli" = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
+
+[settings.python]
+uv_venv_auto = "source"
+
+# TODO: figure out the best way to set this up
+# [env]
+# UV_PYTHON = { value = "{{ tools.python.path }}", tools = true }

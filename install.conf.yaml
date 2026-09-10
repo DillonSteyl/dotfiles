@@ -32,6 +32,8 @@
       path: herdr/config.toml
     ~/.config/git/hooks:
       path: git-hooks
+    ~/.config/mise/config.toml:
+      path: mise/config.toml
 
 - shell:
     - git config --global core.hooksPath ~/.config/git/hooks
