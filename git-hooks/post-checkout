@@ -12,6 +12,12 @@ if [ "$3" != "1" ]; then
   exit 0
 fi
 
+# Worktree creation passes the null ref as the previous HEAD. Skip later
+# branch switches, where environment files have already been synced.
+if [ -n "${1//0/}" ]; then
+  exit 0
+fi
+
 # Get the common git directory (works for both main repo and worktrees)
 GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
 MAIN_REPO=$(cd "$GIT_COMMON_DIR/.." && pwd)
