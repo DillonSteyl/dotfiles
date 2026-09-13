@@ -6,8 +6,12 @@
 
 - create:
     - ~/.config/lazygit
+    - ~/.config/shell
 
 - link:
+    ~/.zshrc:
+      path: .zshrc
+      force: true
     ~/.config/nvim:
       path: nvim
     ~/.config/lazygit/config.yml:
@@ -17,14 +21,8 @@
       path: starship/starship.toml
     ~/.wezterm.lua:
       path: wezterm/.wezterm.lua
-    ~/.config/k9s/skins/:
-      path: k9s/skins
-      force: true
-    ~/.config/k9s/config.yaml:
-      path: k9s/config.yaml
-      force: true
-    ~/.config/k9s/aliases.yaml:
-      path: k9s/aliases.yaml
+    ~/.config/k9s:
+      path: k9s
       force: true
     ~/.config/ghostty/config:
       path: ghostty/config
@@ -36,5 +34,7 @@
       path: mise/config.toml
 
 - shell:
+    - touch ~/.config/shell/secrets.env
+    - chmod 600 ~/.config/shell/secrets.env
     - git config --global core.hooksPath ~/.config/git/hooks
     - chmod +x ~/.config/git/hooks/post-checkout
