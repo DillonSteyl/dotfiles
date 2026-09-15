@@ -52,7 +52,7 @@ k9s:
       numKeyColor: *magenta
     # CrumbView attributes for history navigation.
     crumbs:
-      fgColor: *white
+      fgColor: *black
       bgColor: *cyan
       activeColor: *yellow
     # Resource status and update styles
