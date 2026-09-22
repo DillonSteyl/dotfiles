@@ -1,4 +1,4 @@
-theme = tokyonight
+theme = dark:Solarized Dark Higher Contrast,light:iTerm2 Solarized Light
 font-family = "CommitMono Nerd Font"
 
 macos-option-as-alt = true
@@ -6,5 +6,5 @@ window-width = 120
 window-height = 35
 mouse-hide-while-typing
 
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur = "true"

@@ -1,0 +1,59 @@
+k9s:
+  body:
+    fgColor: "#708183" # foreground
+    bgColor: default # background
+    logoColor: "#268bd2" # solarized blue
+
+  info:
+    fgColor: "#839496" # light foreground (approx Solarized base0)
+    sectionColor: "#2aa198" # solarized cyan
+
+  frame:
+    border:
+      fgColor: "#586e75"
+      focusColor: "#268bd2"
+
+    menu:
+      fgColor: "#93a1a1"
+      keyColor: "#b58900"
+      numKeyColor: "#6c71c4"
+
+    crumbs:
+      fgColor: "#fcf4dc"
+      bgColor: "#073642"
+      activeColor: "#268bd2"
+
+    status:
+      newColor: "#859900" # green
+      modifyColor: "#2aa198" # cyan
+      addColor: "#b58900" # yellow
+      errorColor: "#dc322f" # red
+      highlightcolor: "#268bd2" # blue
+      killColor: "#586e75"
+      completedColor: "#586e75"
+
+    title:
+      fgColor: "#839496"
+      bgColor: default
+      highlightColor: "#2aa198"
+      counterColor: "#6c71c4"
+      filterColor: "#586e75"
+
+  views:
+    table:
+      fgColor: "#93a1a1"
+      bgColor: default
+      cursorColor: "#268bd2"
+      header:
+        fgColor: "#eee8d5"
+        bgColor: default
+        sorterColor: "#b58900"
+
+    yaml:
+      keyColor: "#cb4b16"
+      colonColor: "#2aa198"
+      valueColor: "#839496"
+
+    logs:
+      fgColor: "#e9e2cb"
+      bgColor: default

@@ -5,11 +5,19 @@ return {
     "folke/tokyonight.nvim",
     opts = { style = "moon", transparent = true },
   },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+    },
+  },
   -- Configure default colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "solarized-osaka-vivid",
     },
   },
 }
