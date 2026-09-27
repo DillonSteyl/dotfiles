@@ -32,6 +32,9 @@ eval "$($HOME/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 alias rnw='wezterm cli rename-workspace'
 alias rnt='wezterm cli set-tab-title'
 
+# Default Editor
+export EDITOR=nvim
+
 # Secrets
 secrets_file="$XDG_CONFIG_HOME/shell/secrets.env"
 if [[ -f "$secrets_file" ]]; then
