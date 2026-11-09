@@ -10,6 +10,8 @@ herdr = "latest"
 "npm:opencode-ai" = "latest"
 "npm:ember-cli-update" = "latest"
 "npm:@posthog/cli" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+"npm:clerk" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
