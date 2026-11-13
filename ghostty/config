@@ -1,4 +1,4 @@
-theme = dark:Solarized Dark Higher Contrast,light:iTerm2 Solarized Light
+theme = dark:Catppuccin Mocha,light:iTerm2 Solarized Light
 font-family = "CommitMono Nerd Font"
 
 macos-option-as-alt = true

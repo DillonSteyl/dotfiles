@@ -1,23 +1,14 @@
 return {
+  -- Color scheme options
+  { "craftzdog/solarized-osaka.nvim" },
   { "catppuccin/nvim", name = "catppuccin" },
-  { "rose-pine/neovim", name = "rose-pine", opts = { disable_background = true } },
-  {
-    "folke/tokyonight.nvim",
-    opts = { style = "moon", transparent = true },
-  },
-  {
-    "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      transparent = true,
-    },
-  },
+  { "rose-pine/neovim", name = "rose-pine" },
+  { "folke/tokyonight.nvim", opts = { style = "moon" } },
   -- Configure default colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "solarized-osaka-vivid",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
