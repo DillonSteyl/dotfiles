@@ -15,12 +15,24 @@ local function has_custom_tab_title(tab)
 end
 
 -- Theming
-config.color_scheme = "Tokyo Night Moon"
-config.colors = {
-	selection_bg = "#d2d0e7",
-	selection_fg = "#26233a",
-}
-config.window_background_opacity = 0.95
+
+local function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Mocha"
+	else
+		return "Gruvbox (Gogh)"
+	end
+end
+
+config.color_scheme = scheme_for_appearance(get_appearance())
+config.window_background_opacity = 0.98
 
 config.font = wezterm.font("CommitMono Nerd Font", { weight = 400 })
 config.font_size = 12
@@ -124,7 +136,7 @@ config.keys = {
 	},
 	{
 		mods = "LEADER",
-		key = "\\",
+		key = "v",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
@@ -132,9 +144,19 @@ config.keys = {
 		key = "-",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
+
+	-- Key Table Activation
 	{
 		mods = "LEADER",
-		key = "s",
+		key = "r",
+		action = wezterm.action.ActivateKeyTable({
+			name = "resize_pane",
+			one_shot = false,
+		}),
+	},
+	{
+		mods = "LEADER",
+		key = "w",
 		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
 	},
 	{
@@ -161,11 +183,24 @@ config.keys = {
 			end),
 		}),
 	},
+
 	-- vim-style pane navigation
 	{ mods = "LEADER", key = "h", action = wezterm.action.ActivatePaneDirection("Left") },
 	{ mods = "LEADER", key = "j", action = wezterm.action.ActivatePaneDirection("Down") },
 	{ mods = "LEADER", key = "k", action = wezterm.action.ActivatePaneDirection("Up") },
 	{ mods = "LEADER", key = "l", action = wezterm.action.ActivatePaneDirection("Right") },
+
+	-- vim-style tab navigation
+	{
+		mods = "LEADER",
+		key = "]",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		mods = "LEADER",
+		key = "[",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
 }
 
 -- leader + number to activate that tab
@@ -176,5 +211,28 @@ for i = 1, 9 do
 		action = wezterm.action.ActivateTab(i - 1),
 	})
 end
+
+-------------------------
+-- Key Tables
+-------------------------
+
+config.key_tables = {
+	resize_pane = {
+		-- resize left
+		{ key = "LeftArrow", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "h", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
+		-- resize right
+		{ key = "RightArrow", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
+		{ key = "l", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
+		-- resize up
+		{ key = "UpArrow", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "k", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
+		-- resize down
+		{ key = "DownArrow", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "j", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
+		-- Cancel the mode by pressing escape
+		{ key = "Escape", action = "PopKeyTable" },
+	},
+}
 
 return config
